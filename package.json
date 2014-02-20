@@ -20,7 +20,7 @@
     "mocha": "~1.17.1"
   },
   "scripts": {
-    "test": "mocha --compilers coffee:coffee-script"
+    "test": "cake sbuild"
   },
   "repository": {
     "type": "git",
