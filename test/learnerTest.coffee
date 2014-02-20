@@ -1,6 +1,5 @@
 localStorage = require('../src/mockLocalStorage').localStorage ? localStorage
 chai = require 'chai'
-sinon = require 'sinon'
 chai.should()
 
 
