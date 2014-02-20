@@ -12,7 +12,6 @@ class Learner
       @stats = JSON.parse(localStorage.getItem this.storage_key)
       @stats.lastLoaded
     catch error
-      console.log 'Init @stats: caused by'
       @stats = {
         terms: {}
         lastSaved: undefined,
@@ -23,14 +22,30 @@ class Learner
     if @getLastSaved() <= @stats.lastLoaded
       @stats.lastSaved = new Date
       localStorage.setItem this.storage_key, JSON.stringify(@stats)
+      @stats.lastLoaded = new Date
     else
       console.log 'The stats has been updated since load'
 
   getLastSaved: ->
     try
-      return JSON.parse(localStorage.getItem this.storage_key).lastSaved
+      return new Date(JSON.parse(localStorage.getItem this.storage_key).lastSaved)
     catch error
-      return undefined
+      return new Date(1900, 1, 1) 
+
+  getTermWeight: (term) ->
+    try
+      return @stats.terms[term].weight
+    catch error
+      console.log error
+
+  updateTermWeight: (term, weight) ->
+    if term of @stats.terms
+      @stats.terms[term].weight += weight
+    else
+      @stats.terms[term] = {
+        'weight': weight
+      }
+    @save()
 
 root = exports ? window
 root.Learner = Learner

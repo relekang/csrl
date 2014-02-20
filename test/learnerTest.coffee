@@ -11,7 +11,8 @@ describe 'learner', ->
   it 'should load from localStorage', ->
     learner = new Learner
     learner.should.have.property 'stats' 
-    learner.stats.should.have.property 'terms' 
+    learner.stats.should.have.property 'terms'
+    learner.stats.lastLoaded.should.be.a('date') 
 
   it 'should save to localStorage', ->
     learner = new Learner
