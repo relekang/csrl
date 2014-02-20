@@ -11,5 +11,5 @@ task "sbuild", "run tests", ->
     --reporter #{REPORTER}
     --no-colors
   ", (err, output) ->
-    throw err if err
     console.log output
+    throw err if err
