@@ -1,0 +1,5 @@
+{
+    "cmd": ["mocha"],
+    "working_dir": "${project_path}/..",
+    "shell": true,
+}

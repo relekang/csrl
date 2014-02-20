@@ -1,0 +1,34 @@
+{
+  "name": "rank-learning",
+  "version": "0.1.0",
+  "description": "",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "chai": "~1.9.0",
+    "gulp": "~3.5.2",
+    "gulp-coffee": "~1.4.1",
+    "gulp-concat": "~2.1.7",
+    "gulp-notify": "~0.6.2",
+    "gulp-uglify": "~0.2.1",
+    "gulp-util": "~2.2.14",
+    "coffee-script": "~1.7.1"
+  },
+  "devDependencies": {
+    "gulp-mocha": "~0.4.1",
+    "mocha": "~1.17.1"
+  },
+  "scripts": {
+    "test": "mocha --compilers coffee:coffee-script"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/relekang/rank-learning.git"
+  },
+  "author": "Rolf Erik Lekang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/relekang/rank-learning/issues"
+  }
+}
