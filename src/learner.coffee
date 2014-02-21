@@ -15,14 +15,14 @@ class Learner
       return new Date(1900, 1, 1) 
 
   stats: ->
-    try
-      return JSON.parse(localStorage.getItem Learner.storage_key)
-    catch error
-      stats = {
+    data = JSON.parse(localStorage.getItem Learner.storage_key)
+    if data == undefined or data == null
+      data = {
         terms: {}
       }
-      localStorage.setItem Learner.storage_key, JSON.stringify(stats)
-      return stats
+      localStorage.setItem Learner.storage_key, JSON.stringify(data)
+    return data
+    
 
   getTermWeight: (term) ->
     try
