@@ -24,11 +24,11 @@ class Learner
       localStorage.setItem Learner.storage_key, JSON.stringify(stats)
       return stats
 
-   getTermWeight: (term) ->
+  getTermWeight: (term) ->
     try
       return @stats().terms[term].weight
     catch error
-      console.log error
+      return 0
 
   updateTermWeight: (term, weight) ->
     stats = @stats()
@@ -40,6 +40,25 @@ class Learner
       }
     stats.lastSaved = new Date
     localStorage.setItem Learner.storage_key, JSON.stringify(stats)
+
+  calculateScore: (termScores) ->
+    score = 0
+    for key, value of termScores
+      score += value * @getTermWeight(key)
+    return score
+
+  rank: (list) ->
+    item.score = @calculateScore(item.termScores) for item in list
+    list.sort (a, b) ->
+      return -1 if a.score > b.score
+      return +1 if a.score < b.score
+      return 0
+    return list
+
+  reportClick: (item) ->
+    maxScore = Math.max.apply @, (value for key, value of item.termScores)
+    @updateTermWeight(key, value / maxScore) for key, value of item.termScores
+
 
 root = exports ? window
 root.Learner = Learner

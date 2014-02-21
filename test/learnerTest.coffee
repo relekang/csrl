@@ -1,5 +1,6 @@
 localStorage = require('../src/mockLocalStorage').localStorage ? localStorage
 chai = require 'chai'
+fs = require 'fs'
 chai.should()
 
 
@@ -35,3 +36,19 @@ describe 'learner', ->
       learner.updateTermWeight('programming', 1)
       Learner.getLastSaved().should.be.gt(date)
     , 1
+
+  describe 'reportClick', ->
+    it 'should update term weigths', ->
+      learner = new Learner
+      data = JSON.parse(new String(fs.readFileSync('test/fixtures/documents.json')).toString())
+      learner.reportClick(data[1])
+      learner.getTermWeight('array').should.equal(data[1].termScores['array'] / Math.max.apply @, (value for key, value of data[1].termScores))
+
+  it 'should rerank based on data', ->
+    learner = new Learner
+    data = JSON.parse(new String(fs.readFileSync('test/fixtures/documents.json')).toString())
+    item = data[1]
+    first_rank = (i.id for i in learner.rank(data))
+    learner.reportClick(item)
+    second_rank = (i.id for i in learner.rank(data)) 
+    first_rank.should.not.equal(second_rank)

@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1",
+        "termScores": {
+            "programming": 2,
+            "python": 4,
+            "array": 0
+        },
+        "url": "",
+        "title": ""
+    },
+    {
+        "id": "2",
+        "termScores": {
+            "programming": 2,
+            "python": 0,
+            "array": 10
+        },
+        "url": "",
+        "title": ""
+    },
+    {
+        "id": "3",
+        "termScores": {
+            "programming": 4,
+            "python": 1,
+            "dictionary": 2
+        },
+        "url": "",
+        "title": ""
+    }
+]
