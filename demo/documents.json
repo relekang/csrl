@@ -3,30 +3,32 @@
         "id": "1",
         "termScores": {
             "programming": 2,
-            "python": 4,
-            "array": 0
+            "python": 6
         },
-        "url": "",
-        "title": ""
+        "url": "http://python.org",
+        "title": "Welcome to Python.org",
+        "description": "The official home of the Python Programming Language."
     },
     {
         "id": "2",
         "termScores": {
             "programming": 2,
-            "python": 0,
-            "array": 10
+            "javascript": 5
         },
-        "url": "",
-        "title": ""
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+        "title": "JavaScript | MDN",
+        "description": "JavaScript® (often shortened to JS) is a lightweight, interpreted, object-oriented language with first-class functions, most known as the scripting language for Web pages, but used in many non-browser environments as well such as node.js or Apache CouchDB. It is a prototype-based, multi-paradigm scripting language that is dynamic, and supports object-oriented, imperative, and functional programming styles."
     },
     {
         "id": "3",
         "termScores": {
-            "programming": 4,
-            "python": 1,
-            "dictionary": 2
+            "programming": 2,
+            "python": 2,
+            "web": 3,
+            "django": 6
         },
-        "url": "",
-        "title": ""
+        "url": "https://www.djangoproject.com/",
+        "title": "Django: The Web framework for perfectionists with deadlines",
+        "description": "Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design."
     }
 ]
