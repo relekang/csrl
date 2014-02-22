@@ -4,8 +4,11 @@ FILTER_OUT = ['getItem', 'setItem', 'removeItem', 'toString']
 localStorage = {}
 localStorage.getItem = (key) ->
   console.log "getItem(#{key})" if DEBUG
-  return localStorage[key]
   console.log "In localStorage: #{this.toString()}" if DEBUG
+  try
+    return localStorage[key]
+  catch error
+    console.log error if DEBUG
 
 localStorage.setItem = (key, value) ->
   console.log "setItem(#{key}, #{value})" if DEBUG
