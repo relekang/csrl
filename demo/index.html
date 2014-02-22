@@ -4,16 +4,16 @@
     <link rel="stylesheet" type="text/css" href="libs/bootstrap.css">
   </head>
   <body data-ng-controller="demoController">
-    <div class="container" style="margin-top:30px;">
-      
-      <div data-ng-repeat="item in results" class="row">
-        <h1><a data-ng-click="clickResult(item)">{{item.id}}: {{item.title}}</a></div>
-        <div>{{item.url}}</div>
-        <div>{{item.termScores}}</div>
-
+    <div class="container">
+      <div class="row" style="margin-bottom: 60px">
+        <div data-ng-repeat="item in results" class="col-xs-12">
+          <h3><a data-ng-click="clickResult(item)">{{item.id}}: {{item.title}}</a></h3>
+          <em>{{item.url}}</em>
+          <p>{{item.description}}</p>
+        </div>
       </div>
 
-      <div class="well">
+      <div class="well" style="position:absolute; bottom:0; left:0; width:100%; margin-bottom:0;">
         <div class="row">
           <div class="col-xs-2 text-center">
             <a data-ng-click="reset()" class="btn btn-danger">Reset</a>
