@@ -4,7 +4,7 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     rl = require('./gulp-removelines');
 
-gulp.task('compile', function() {
+gulp.task('build', function() {
   return gulp.src('src/learner.coffee')
     .pipe(coffee({bare: true}))
     .pipe(rl({'filters': [/^localStorage = /]}))
@@ -15,7 +15,7 @@ gulp.task('compile', function() {
       message: 'Compiled files'
     }));
 });
-gulp.task('compile-demo', function() {
+gulp.task('build-demo', function() {
   return gulp.src('demo/app.coffee')
     .pipe(coffee({bare: true}))
     //.pipe(uglify())
@@ -26,13 +26,13 @@ gulp.task('compile-demo', function() {
     }));
 });
 
-gulp.task('default', ['compile']);
+gulp.task('default', ['build']);
 
 gulp.task('watch', function () {
-  gulp.watch('src/*.coffee', ['compile']);
+  gulp.watch('src/*.coffee', ['build']);
 });
 gulp.task('watch-demo', function () {
-  gulp.watch('**/*.coffee', ['compile', 'compile-demo']);
+  gulp.watch('**/*.coffee', ['build', 'build-demo']);
 });
 
 
