@@ -6,32 +6,29 @@ class Learner
 
   @reset: ->
     localStorage.removeItem this.storage_key
-  
-  @getLastSaved: ->
-    try
-      return new Date(JSON.parse(localStorage.getItem Learner.storage_key).lastSaved)
-    catch error
-      console.log error
-      return new Date(1900, 1, 1) 
 
-  stats: ->
-    data = JSON.parse(localStorage.getItem Learner.storage_key)
-    if data == undefined or data == null
-      data = {
-        terms: {}
-      }
-      localStorage.setItem Learner.storage_key, JSON.stringify(data)
-    return data
-    
+  save: (stats) ->
+    localStorage.setItem Learner.storage_key, JSON.stringify(stats)
+
+  load: ->
+    data = localStorage.getItem Learner.storage_key
+    if not data
+      stats = { terms: {} }
+    else
+      stats = JSON.parse(data)
+    return stats
+
+  getLastSaved: ->
+      return new Date(@load().lastSaved)
 
   getTermWeight: (term) ->
     try
-      return @stats().terms[term].weight
+      return @load().terms[term].weight
     catch error
       return 0
 
   updateTermWeight: (term, weight) ->
-    stats = @stats()
+    stats = @load()
     if term of stats.terms
       stats.terms[term].weight += weight
     else
@@ -39,7 +36,7 @@ class Learner
         'weight': weight
       }
     stats.lastSaved = new Date
-    localStorage.setItem Learner.storage_key, JSON.stringify(stats)
+    @save stats
 
   calculateScore: (termScores) ->
     score = 0

@@ -31,10 +31,10 @@ describe 'learner', ->
   it 'should save last saved date', ->
     learner = new Learner
     learner.updateTermWeight('programming', 1)
-    date = Learner.getLastSaved()
+    date = learner.getLastSaved()
     setTimeout ->
       learner.updateTermWeight('programming', 1)
-      Learner.getLastSaved().should.be.gt(date)
+      learner.getLastSaved().should.be.gt(date)
     , 1
 
   describe 'reportClick', ->
