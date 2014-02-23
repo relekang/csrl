@@ -12,7 +12,8 @@
     "gulp-notify": "~0.6.2",
     "gulp-uglify": "~0.2.1",
     "gulp-util": "~2.2.14",
-    "coffee-script": "~1.7.1"
+    "coffee-script": "~1.7.1",
+    "gulp-remove-lines": "~0.1.0"
   },
   "devDependencies": {
     "gulp-mocha": "~0.4.1",

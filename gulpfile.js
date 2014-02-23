@@ -2,7 +2,7 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     coffee = require('gulp-coffee'),
     notify = require('gulp-notify'),
-    rl = require('./gulp-removelines');
+    rl = require('gulp-remove-lines');
 
 gulp.task('build', function() {
   return gulp.src('src/learner.coffee')
